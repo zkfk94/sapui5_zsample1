@@ -1,0 +1,80 @@
+<mvc:View
+		controllerName="zsample1.controller.Detail"
+		xmlns:mvc="sap.ui.core.mvc"
+		xmlns="sap.m"
+		xmlns:f="sap.f"
+		height="100%">
+		<f:DynamicPage id="dynamicPageId">
+			<!-- DynamicPage Title -->
+			<f:title>
+				<f:DynamicPageTitle>
+					<f:heading>
+						<Title text="Sample"/>
+					</f:heading>
+				</f:DynamicPageTitle>
+			</f:title>
+
+			<!-- DynamicPage Header-->  
+			<f:header>  
+				<f:DynamicPageHeader pinnable="true">
+
+				</f:DynamicPageHeader>
+			</f:header>
+
+			<f:content>
+				<Button text="Default"
+						press="onPress">
+				</Button>
+			    <VBox>
+
+				    <Label text="carrid" labelFor="carrid" />
+                        <Input
+                        id="carrid"
+                        value="{main>carrid}">
+					</Input>
+				    <Label text="connid" labelFor="connid" />
+                        <Input
+                        id="connid"
+                        value="{main>connid}">
+					</Input>
+					 <Label text="fldate" labelFor="fldate" />
+                        <Input
+                        id="fldate"
+                        value="{main>fldate}">
+					</Input>
+
+				    <Label text="price" labelFor="price" />
+                        <Input
+                        id="price"
+                        value="{main>price}">
+					</Input>
+
+				    <Label text="currency" labelFor="currency" />
+                        <Input
+                        id="currency"
+                        value="{main>currency}">
+					</Input>
+
+
+				    <Label text="qty" labelFor="qty" />
+                        <Input
+                        id="qty"
+                        value="{main>qty}">
+					</Input>
+
+				    <Label text="meins" labelFor="meins" />
+                        <Input
+                        id="meins"
+                        value="{main>meins}">
+					</Input>
+									
+				</VBox>
+			</f:content>
+            
+			<!-- DynamicPage Footer -->
+			<f:footer>
+
+			</f:footer>
+		</f:DynamicPage>
+</mvc:View>
+

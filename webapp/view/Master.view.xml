@@ -1,0 +1,369 @@
+<mvc:View
+    controllerName="zsample1.controller.Master"
+    displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:t="sap.ui.table"
+    xmlns:u="sap.ui.unified"
+    xmlns:f="sap.f"
+    xmlns:layout="sap.ui.layout"
+    xmlns:chart="sap.suite.ui.commons"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:viz.data="sap.viz.ui5.data"
+>
+    <f:DynamicPage id="dynamicPageId">
+        <!-- DynamicPage Title -->
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="Sample"/>
+                </f:heading>
+            </f:DynamicPageTitle>
+        </f:title>
+
+        <!-- DynamicPage Header-->  
+        <f:header>  
+            <f:DynamicPageHeader pinnable="true">
+
+            <Panel>
+                    <Label text="Header Create 조건" />
+                    <FlexBox
+                            alignItems="Start"
+                            justifyContent="SpaceBetween">
+                        <items>
+                            <Panel
+                                    backgroundDesign="Transparent"
+                                    class="sapUiNoContentPadding">
+                                <content>
+                                    <layout:HorizontalLayout
+                                            allowWrapping="true">
+                                        <layout:VerticalLayout
+                                                class="sapUiMediumMarginEnd">
+                                            <Label text="Carrid" labelFor="hcarrid" />
+                                            <Input
+                                                id="hcarrid"
+                                                placeholder="Enter carrid"
+                                                value="{main>/create/carrid}">
+                                            </Input>
+                                        </layout:VerticalLayout>
+                                        <layout:VerticalLayout class="sapUiMediumMarginEnd">
+                                        <Label text="connid" labelFor="hconnid" />
+                                            <Input
+                                                id="hconnid"
+                                                placeholder="Enter connid"
+                                                value="{main>/create/connid}">
+                                            </Input>
+                                        </layout:VerticalLayout>
+                                    </layout:HorizontalLayout>
+                                </content>
+                            </Panel>
+                            <Button
+                            text="Create"
+                            type="Emphasized"
+                            press="onCreateH"/>
+                            <Button
+                            text="Search"
+                            type="Emphasized"
+                            press="onSearchH"/>
+                        </items>
+                    </FlexBox>
+                    </Panel>
+
+
+            <Panel expandable="false">
+                <Table id="idTable2" items="{main>/it_data2}">
+                    <columns>
+                        <Column>
+                            <header>
+                                <Text text="Airline Code"></Text>
+                            </header>
+                        </Column>
+                        <Column>
+                            <header>
+                                <Text text="Flight Connection Number"></Text>
+                            </header>
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem press="onSelectH" vAlign="Middle">
+                            <cells>
+                                <Input value="{main>carrid}" editable ="{main>/editMode}"></Input>
+                                <Input value="{main>connid}" editable ="{main>/editMode}"></Input>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </Panel>
+
+            <Panel>
+                    <Label text="Detail Create 조건" />
+                    <FlexBox
+                            alignItems="Start"
+                            justifyContent="SpaceBetween">
+                        <items>
+                            <Panel
+                                    backgroundDesign="Transparent"
+                                    class="sapUiNoContentPadding">
+                                <content>
+                                    <layout:HorizontalLayout
+                                            allowWrapping="true">
+                                        <layout:VerticalLayout
+                                                class="sapUiMediumMarginEnd">
+                                            <Label text="Carrid" labelFor="carrid" />
+                                            <Input
+                                                id="carrid"
+                                                placeholder="Enter carrid"
+                                                value="{main>/create/carrid}">
+                                            </Input>
+                                        </layout:VerticalLayout>
+                                        <layout:VerticalLayout class="sapUiMediumMarginEnd">
+                                        <Label text="connid" labelFor="connid" />
+                                            <Input
+                                                id="connid"
+                                                placeholder="Enter connid"
+                                                value="{main>/create/connid}">
+                                            </Input>
+                                        </layout:VerticalLayout>
+                                        <layout:VerticalLayout>
+                                        <Label text="create fldate" labelFor="fldate" />
+											<DatePicker
+												id="DTI1"
+												valueFormat="yyyy-MM-dd"
+												value="{main>/create/fldate}"/>					
+                                         </layout:VerticalLayout>			
+                                    </layout:HorizontalLayout>
+                                </content>
+                            </Panel>
+                            <Button
+                            text="Create"
+                            type="Emphasized"
+                            press="onCreate"/>
+                        </items>
+                    </FlexBox>
+                    </Panel>
+
+                    <Panel>
+                    <Label text="조회조건" />
+                    <FlexBox
+                            alignItems="Start"
+                            justifyContent="SpaceBetween">
+                        <items>
+                            <Panel
+                                    backgroundDesign="Transparent"
+                                    class="sapUiNoContentPadding">
+                                <content>
+                                    <layout:HorizontalLayout
+                                            allowWrapping="true">
+                                        <layout:VerticalLayout
+                                                class="sapUiMediumMarginEnd">
+                                            <Label text="filter Carrid" labelFor="fcarrid" />
+                                            <Input
+                                                id="fcarrid"
+                                                placeholder="filter carrid"
+                                                value="{main>/filter/carrid}">
+                                            </Input>
+                                        </layout:VerticalLayout>
+                                        <layout:VerticalLayout class="sapUiMediumMarginEnd">
+                                        <Label text="filter connid" labelFor="fconnid" />
+                                            <Input
+                                                id="fconnid"
+                                                placeholder="filter connid"
+                                                value="{main>/filter/connid}">
+                                            </Input>
+                                        </layout:VerticalLayout>		
+										<layout:VerticalLayout class="sapUiMediumMarginEnd">
+											<Label text="filter fldate" labelFor="ffldate" />
+												<Input
+													id="ffldate"
+													placeholder="filter fldate"
+													value="{main>/filter/fldate}">
+												</Input>
+										</layout:VerticalLayout>                                        
+                                    </layout:HorizontalLayout>
+                                </content>
+                            </Panel>
+                            <Button
+                            text="Search"
+                            type="Emphasized"
+                            press="onSearch"/>
+                        </items>
+                    </FlexBox>				
+                            
+                    </Panel>
+            </f:DynamicPageHeader>
+        </f:header>
+
+        <f:content>
+        <VBox>
+            <Panel expandable="false">
+                <Table id="idTable" items="{main>/it_data}" mode="MultiSelect">
+                <headerToolbar>
+					<OverflowToolbar id="otbSubheader">
+						<Title text="Table" level="H2" />
+						<ToolbarSpacer />
+								<Button
+								icon="sap-icon://add"
+								press="onAdd"/>
+								<Button
+								icon="sap-icon://less"
+								press="onDelete"/>
+								<Button
+								text="Edit"
+								press="onEdit"/>
+								<Button
+								text="Save"
+								press="onSave"/>
+								<Button
+								text="SelectedDelete"
+								press="onSelectedDelete"/>
+					</OverflowToolbar>
+				</headerToolbar>
+                    <columns>
+                        <Column>
+                            <header>
+                                <Text text="Airline Code"></Text>
+                            </header>
+                        </Column>
+                        <Column>
+                            <header>
+                                <Text text="Flight Connection Number"></Text>
+                            </header>
+                        </Column>
+                        <Column>
+                            <header>
+                                <Text text="Flight date"></Text>
+                            </header>
+                        </Column>
+                        <Column>
+                            <header>
+                                <Text text="Local currency of airline"></Text>
+                            </header>
+                        </Column>               
+                        <Column>
+                            <header>
+                                <Text text="Billing quantity"></Text>
+                            </header>
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem press="onSelect" vAlign="Middle" type="Navigation">
+                            <cells>
+                                <Input value="{main>carrid}" editable ="{main>/editMode}"></Input>
+                                <Input value="{main>connid}" editable ="{main>/editMode}"></Input>
+                               	<DatePicker
+									id="DTI2"
+			                        valueFormat="yyyy-MM-dd"
+									value="{main>fldate}"
+									editable ="{main>/editMode}"/>
+                                <ObjectNumber
+                                        number="{
+                                            parts:[{path:'main>price'},{path:'main>currency'}],
+                                            type: 'sap.ui.model.type.Currency',
+                                            formatOptions: {showMeasure: false}
+                                        }"
+                                        unit="{main>currency}" 
+                                        active ="{main>/editMode}"/>
+                                <ObjectNumber
+                                        number="{main>qty}"
+                                        unit="{main>meins}" 
+                                        active ="{main>/editMode}"/>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </Panel>
+
+            <Panel>
+
+               <chart:ChartContainer id="chartContainer1" showFullScreen="true" showZoom="true" title="char1">
+                    <chart:ChartContainerContent>
+                        <chart:content>
+                            <viz:VizFrame id="vizFrame1" uiConfig="{applicationSet:'fiori'}" height='20rem' width="100%"
+                                vizType='line'>
+                                <viz:dataset>
+                                    <viz.data:FlattenedDataset data="{main>/it_data}">
+                                        <viz.data:dimensions>
+                                            <viz.data:DimensionDefinition name="fldate"
+                                                value="{main>fldate}" />
+                                        </viz.data:dimensions>
+                                        <viz.data:measures>
+                                            <viz.data:MeasureDefinition name="price"
+                                                value="{main>price}" />
+                                        </viz.data:measures>
+                                    </viz.data:FlattenedDataset>
+                                </viz:dataset>
+                                <viz:feeds>
+                                    <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="price" />
+                                    <viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="fldate" />
+                                </viz:feeds>
+                            </viz:VizFrame>
+                        </chart:content>
+                    </chart:ChartContainerContent>
+                </chart:ChartContainer>
+
+                <chart:ChartContainer id="chartContainer2" showFullScreen="true" showZoom="true" title="char2">
+                    <chart:ChartContainerContent>
+                        <chart:content>
+                            <viz:VizFrame id="vizFrame2" uiConfig="{applicationSet:'fiori'}" height='20rem' width="100%"
+                                vizType='line'>
+                                <viz:dataset>
+                                    <viz.data:FlattenedDataset data="{main>/it_data}">
+                                        <viz.data:dimensions>
+				                            <viz.data:DimensionDefinition name="carrid"
+                                                value="{main>carrid}" />
+                                        </viz.data:dimensions>
+                                        <viz.data:measures>
+											<viz.data:MeasureDefinition name="price"
+                                                value="{main>price}" />
+											<viz.data:MeasureDefinition name="qty"
+                                                value="{main>qty}" />
+                                        </viz.data:measures>
+                                    </viz.data:FlattenedDataset>
+                                </viz:dataset>
+                                <viz:feeds>
+									<viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="carrid" />
+									<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="price" />
+									<viz.feeds:FeedItem uid="valueAxis" type="Measure" values="qty" />                           
+							    </viz:feeds>
+                            </viz:VizFrame>
+                        </chart:content>
+                    </chart:ChartContainerContent>
+                </chart:ChartContainer>
+
+              <chart:ChartContainer id="chartContainer3" showFullScreen="true" showZoom="true" title="char3">
+                    <chart:ChartContainerContent>
+                        <chart:content>
+                            <viz:VizFrame id="vizFrame3" uiConfig="{applicationSet:'fiori'}" height='20rem' width="100%"
+                                vizType='line'>
+                                <viz:dataset>
+                                    <viz.data:FlattenedDataset data="{main>/it_data}">
+                                        <viz.data:dimensions>
+                                            <viz.data:DimensionDefinition name="carrid"
+                                                value="{main>carrid}" />
+											<viz.data:DimensionDefinition name="connid"
+                                                value="{main>connid}" />
+                                        </viz.data:dimensions>
+                                        <viz.data:measures>
+                                            <viz.data:MeasureDefinition name="price"
+                                                value="{main>price}" />
+                                        </viz.data:measures>
+                                    </viz.data:FlattenedDataset>
+                                </viz:dataset>
+                                <viz:feeds>
+                                    <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="price" />
+                                    <viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="carrid" />
+									<viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="connid" />
+                                </viz:feeds>
+                            </viz:VizFrame>
+                        </chart:content>
+                    </chart:ChartContainerContent>
+                </chart:ChartContainer>
+            </Panel>
+            </VBox>
+        </f:content>
+        <f:footer>
+
+        </f:footer>
+    </f:DynamicPage>
+</mvc:View>
